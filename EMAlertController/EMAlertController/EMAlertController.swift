@@ -11,7 +11,9 @@ import UIKit
 // MARK: - EMAlerView Dimensions
 enum Dimension {
   
-  static let width: CGFloat = 280.0
+  static var width: CGFloat {
+      return (UIScreen.main.bounds.width <= 414.0) ? (UIScreen.main.bounds.width - 60) : 280
+  }
   static let padding: CGFloat = 15.0
   static let buttonHeight: CGFloat = 50.0
 }
@@ -19,6 +21,7 @@ enum Dimension {
 open class EMAlertController: UIViewController {
   
   // MARK: - Properties
+  internal var alertViewHeight: NSLayoutConstraint?
   internal var buttonStackViewHeightConstraint: NSLayoutConstraint?
   internal var buttonStackViewWidthConstraint: NSLayoutConstraint?
   internal var scrollViewHeightConstraint: NSLayoutConstraint?
@@ -88,6 +91,7 @@ open class EMAlertController: UIViewController {
     textview.backgroundColor = UIColor.clear
     textview.isScrollEnabled = false
     textview.isSelectable = false
+    textview.bounces = false
     
     return textview
   }()
@@ -221,6 +225,11 @@ open class EMAlertController: UIViewController {
     }, completion: nil)
   }
   
+  open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    
+    alertViewHeight?.constant = size.height - 80
+    alertView.layoutIfNeeded()
+  }
 }
 
 // MARK: - Setup Methods
@@ -257,7 +266,8 @@ extension EMAlertController {
     alertView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 100).isActive = true
     alertView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
     alertView.widthAnchor.constraint(equalToConstant: Dimension.width).isActive = true
-    alertView.heightAnchor.constraint(lessThanOrEqualToConstant: view.frame.height - 80).isActive = true
+    alertViewHeight = alertView.heightAnchor.constraint(lessThanOrEqualToConstant: view.bounds.height - 80)
+    alertViewHeight!.isActive = true
     
     // imageView Constraints
     imageView.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 5).isActive = true

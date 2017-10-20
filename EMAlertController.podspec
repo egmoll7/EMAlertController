@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'EMAlertController'
-  s.version          = '1.0.1'
+  s.version          = '1.0.0'
   s.summary          = 'Elegant alert view controller alternative for iOS'
 
   s.description      = <<-DESC
