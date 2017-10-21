@@ -213,15 +213,15 @@ open class EMAlertController: UIViewController {
     }
 
     UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
-      let trasnform = CGAffineTransform(translationX: 0, y: -100)
-      self.alertView.transform = trasnform
+      let transform = CGAffineTransform(translationX: 0, y: -100)
+      self.alertView.transform = transform
     }, completion: nil)
   }
   
   override open func viewWillDisappear(_ animated: Bool) {
     UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
-      let trasnform = CGAffineTransform(translationX: 0, y: 50)
-      self.alertView.transform = trasnform
+      let transform = CGAffineTransform(translationX: 0, y: 50)
+      self.alertView.transform = transform
     }, completion: nil)
   }
   
