@@ -10,7 +10,6 @@ import UIKit
 
 // MARK: - EMAlerView Dimensions
 enum Dimension {
-  
   static var width: CGFloat {
       return (UIScreen.main.bounds.width <= 414.0) ? (UIScreen.main.bounds.width - 60) : 280
   }
@@ -29,9 +28,7 @@ open class EMAlertController: UIViewController {
   internal var messageLabelHeight: CGFloat = 20
   
   internal lazy var backgroundView: UIView = {
-    
     let bgView = UIView()
-    
     bgView.translatesAutoresizingMaskIntoConstraints = false
     bgView.backgroundColor = .darkGray
     bgView.alpha = 0.3
@@ -40,9 +37,7 @@ open class EMAlertController: UIViewController {
   }()
   
   internal var alertView: UIView = {
-    
     let alertView = UIView()
-  
     alertView.translatesAutoresizingMaskIntoConstraints = false
     alertView.backgroundColor = UIColor.emAlertviewColor
     alertView.layer.cornerRadius = 5
@@ -56,9 +51,7 @@ open class EMAlertController: UIViewController {
   }()
   
   internal var imageView: UIImageView = {
-    
     let imageView = UIImageView()
-    
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .scaleAspectFit
     
@@ -66,9 +59,7 @@ open class EMAlertController: UIViewController {
   }()
   
   internal var titleLabel: UILabel = {
-    
     let label = UILabel()
-    
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = UIFont.boldSystemFont(ofSize: 17)
     label.textAlignment = .center
@@ -79,9 +70,7 @@ open class EMAlertController: UIViewController {
   }()
   
   internal var messageTextView: UITextView = {
-    
     let textview = UITextView()
-    
     textview.translatesAutoresizingMaskIntoConstraints = false
     textview.font = UIFont.systemFont(ofSize: 14)
     textview.textAlignment = .center
@@ -97,9 +86,7 @@ open class EMAlertController: UIViewController {
   }()
   
   internal let buttonStackView: UIStackView = {
-    
     let stackView = UIStackView()
-    
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.alignment = .fill
     stackView.distribution = .fillEqually
@@ -109,75 +96,63 @@ open class EMAlertController: UIViewController {
   }()
   
   public var cornerRadius: CGFloat? {
-    
     willSet {
       alertView.layer.cornerRadius = newValue!
     }
   }
   
   public var iconImage: UIImage? {
-    
     get {
       return imageView.image
     }
-    
     set {
       imageView.image = newValue
     }
   }
   
   public var titleText: String? {
-    
     get {
       return titleLabel.text
     }
-    
     set {
        titleLabel.text = newValue
     }
   }
   
   public var messageText: String? {
-
     get {
       return messageTextView.text
     }
-    
     set {
       messageTextView.text = newValue
     }
   }
   
   public var titleColor: UIColor? {
-    
     willSet {
       titleLabel.textColor = newValue
     }
   }
   
   public var messageColor: UIColor? {
-    
     willSet {
       messageTextView.textColor = newValue
     }
   }
   
   public var backgroundColor: UIColor? {
-    
     willSet {
       alertView.backgroundColor = newValue
     }
   }
   
   public var backgroundViewColor: UIColor? {
-    
     willSet {
       backgroundView.backgroundColor = newValue
     }
   }
   
   public var backgroundViewAlpha: CGFloat? {
-    
     willSet {
       backgroundView.alpha = newValue!
     }
@@ -207,26 +182,24 @@ open class EMAlertController: UIViewController {
   }
 
   override open func viewDidLayoutSubviews() {
-    
-    if (alertView.frame.height >= UIScreen.main.bounds.height - 80) {
+    if alertView.frame.height >= UIScreen.main.bounds.height - 80 {
       messageTextView.isScrollEnabled = true
     }
 
     UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
-      let trasnform = CGAffineTransform(translationX: 0, y: -100)
-      self.alertView.transform = trasnform
+      let transform = CGAffineTransform(translationX: 0, y: -100)
+      self.alertView.transform = transform
     }, completion: nil)
   }
   
   override open func viewWillDisappear(_ animated: Bool) {
     UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
-      let trasnform = CGAffineTransform(translationX: 0, y: 50)
-      self.alertView.transform = trasnform
+      let transform = CGAffineTransform(translationX: 0, y: 50)
+      self.alertView.transform = transform
     }, completion: nil)
   }
   
   open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    
     alertViewHeight?.constant = size.height - 80
     alertView.layoutIfNeeded()
   }
@@ -236,17 +209,15 @@ open class EMAlertController: UIViewController {
 extension EMAlertController {
   
   internal func setUp() {
-
     self.modalPresentationStyle = .custom
     self.modalTransitionStyle = .crossDissolve
     
     // TODO: Add touch handler to backgroundView
-    
+
     addConstraits()
   }
   
   internal func addConstraits() {
-    
     view.addSubview(alertView)
     view.insertSubview(backgroundView, at: 0)
     
@@ -254,7 +225,6 @@ extension EMAlertController {
     alertView.addSubview(titleLabel)
     alertView.addSubview(messageTextView)
     alertView.addSubview(buttonStackView)
-
     
     // backgroundView Constraints
     backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -301,19 +271,14 @@ extension EMAlertController {
 
 // MARK: - Action Methods
 extension EMAlertController {
-  
    open func addAction(action: EMAlertAction) {
-    
     buttonStackView.addArrangedSubview(action)
     
-    if (buttonStackView.arrangedSubviews.count > 2) {
-      
+    if buttonStackView.arrangedSubviews.count > 2 {
       buttonStackView.axis = .vertical
       buttonStackViewHeightConstraint?.constant = Dimension.buttonHeight * CGFloat(buttonStackView.arrangedSubviews.count)
       buttonStackView.spacing = 0
-      
     } else {
-      
       buttonStackViewHeightConstraint?.constant = Dimension.buttonHeight
       buttonStackView.axis = .horizontal
       buttonStackView.spacing = 15
@@ -323,7 +288,6 @@ extension EMAlertController {
   }
   
   @objc func buttonAction(sender: EMAlertAction) {
-    
     dismiss(animated: true, completion: nil)
   }
 }
