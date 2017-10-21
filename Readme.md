@@ -82,6 +82,9 @@ alert.addAction(action: confirm)
 
 ## Customization
 
+### Alert View
+----------------
+
 ### Icon
 ```swift
 let icon = UIImage(named: "imageName")
@@ -135,11 +138,37 @@ alert.backgroundViewAlpha = 1.0
 // Default alpha = 0.2
 ```
 
-## Todo
+### Alert Actions
+----------------
+
+### Title
+```swift
+action.title = "Sample Title"
+```
+
+### Title Color
+```swift
+action.titleColor = UIColor.red
+// Normal style action default color = UIColor(red: 53/255, green: 53/255, blue: 53/255, alpha: 1.0)
+// Cancel style action default color = UIColor(red: 230/255, green: 57/255, blue: 70/255, alpha: 1.0)
+```
+
+### Title Font
+```swift
+action.titleFont = UIFont.systemFont(ofSize: 14)
+// Default font = UIFont.boldSystemFont(ofSize: 16)
+```
+
+### Background Color
+```swift
+action.actionBackgroundColor = UIColor.red
+// Default color = UIColor.clear
+```
+
+## TODO
 * [ ] Textfield Support
 * [ ] Carthage Support
 * [ ] Actions Scroll Support
-* [ ] Message Scroll Support
 
 ## License
 ----------------
