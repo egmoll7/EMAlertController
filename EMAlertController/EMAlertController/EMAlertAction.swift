@@ -9,7 +9,6 @@
 import UIKit
 
 public enum EMAlertActionStyle: Int {
-  
   case normal
   case cancel
 }
@@ -21,28 +20,24 @@ open class EMAlertAction: UIButton {
   internal var action: (() -> Void)?
   
   public var title: String? {
-
     willSet {
       setTitle(newValue, for: .normal)
     }
   }
   
   public var titleColor: UIColor? {
-    
     willSet {
       setTitleColor(newValue, for: .normal)
     }
   }
   
   public var titleFont: UIFont? {
-    
     willSet {
       self.titleLabel?.font = newValue
     }
   }
   
   public var actionBackgroundColor: UIColor? {
-    
     willSet {
       backgroundColor = newValue
     }
@@ -71,7 +66,6 @@ open class EMAlertAction: UIButton {
     self.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
     
     switch style {
-      
       case .normal:
         setTitle(title: title, forStyle: .normal)
       
@@ -84,7 +78,6 @@ open class EMAlertAction: UIButton {
 internal extension EMAlertAction {
   
   fileprivate func setTitle(title: String, forStyle: EMAlertActionStyle) {
-    
     self.setTitle(title, for: .normal)
     addSeparator()
 
@@ -100,7 +93,6 @@ internal extension EMAlertAction {
   }
   
   fileprivate func addSeparator() {
-    
     let separator = UIView()
     separator.translatesAutoresizingMaskIntoConstraints = false
     separator.backgroundColor = UIColor.emSeparatorColor.withAlphaComponent(0.4)
@@ -117,6 +109,3 @@ internal extension EMAlertAction {
     self.action?()
   }
 }
-
-
-
