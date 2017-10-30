@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		885AF7D11F9EBFE100DE5A83 /* EMAlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AF7D01F9EBFE100DE5A83 /* EMAlertTextField.swift */; };
 		8862A8811F96DE91001B33D4 /* UIColor+EMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862A8801F96DE91001B33D4 /* UIColor+EMAlertController.swift */; };
 		88794A271F914A1D00920DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88794A261F914A1D00920DDD /* AppDelegate.swift */; };
 		88794A291F914A1D00920DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88794A281F914A1D00920DDD /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		885AF7D01F9EBFE100DE5A83 /* EMAlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertTextField.swift; sourceTree = "<group>"; };
 		8862A8801F96DE91001B33D4 /* UIColor+EMAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+EMAlertController.swift"; sourceTree = "<group>"; };
 		88794A231F914A1D00920DDD /* EMAlertController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMAlertController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88794A261F914A1D00920DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				8862A8801F96DE91001B33D4 /* UIColor+EMAlertController.swift */,
 				88794A3A1F92AC3500920DDD /* EMAlertAction.swift */,
 				88794A381F914AA500920DDD /* EMAlertController.swift */,
+				885AF7D01F9EBFE100DE5A83 /* EMAlertTextField.swift */,
 			);
 			path = EMAlertController;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				885AF7D11F9EBFE100DE5A83 /* EMAlertTextField.swift in Sources */,
 				88794A291F914A1D00920DDD /* ViewController.swift in Sources */,
 				8862A8811F96DE91001B33D4 /* UIColor+EMAlertController.swift in Sources */,
 				88794A271F914A1D00920DDD /* AppDelegate.swift in Sources */,

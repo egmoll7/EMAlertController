@@ -44,7 +44,7 @@ open class EMAlertAction: UIButton {
   }
 
   // MARK: - Initializers
-  required public  init?(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
   
@@ -75,36 +75,23 @@ open class EMAlertAction: UIButton {
   }
 }
 
-internal extension EMAlertAction {
+extension EMAlertAction: Separatable {
   
   fileprivate func setTitle(title: String, forStyle: EMAlertActionStyle) {
     self.setTitle(title, for: .normal)
-    addSeparator()
+    addSeparator(self)
+    clipsToBounds = true
 
     switch forStyle {
     case .normal:
-      setTitleColor(UIColor.emActionColor, for: .normal)
+      setTitleColor(.emActionColor, for: .normal)
       titleFont = UIFont.boldSystemFont(ofSize: 16)
       
     case .cancel:
-      setTitleColor(UIColor.emCancelColor, for: .normal)
+      setTitleColor(.emCancelColor, for: .normal)
       titleFont = UIFont.boldSystemFont(ofSize: 16)
     }
   }
-  
-  fileprivate func addSeparator() {
-    let separator = UIView()
-    separator.translatesAutoresizingMaskIntoConstraints = false
-    separator.backgroundColor = UIColor.emSeparatorColor.withAlphaComponent(0.4)
-    
-    self.addSubview(separator)
-    
-    separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-    separator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    separator.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-    separator.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-  }
-  
   @objc func actionTapped(sender: EMAlertAction) {
     self.action?()
   }
