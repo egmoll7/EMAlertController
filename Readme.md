@@ -165,6 +165,12 @@ action.actionBackgroundColor = UIColor.red
 // Default color = UIColor.clear
 ```
 
+### Button Spacing (Only when two buttons are displayed in horizontal)
+```swift
+alert.buttonSpacing = 0
+// Default spacing = 15
+```
+
 ## TODO
 * [ ] Textfield Support
 * [ ] Carthage Support
