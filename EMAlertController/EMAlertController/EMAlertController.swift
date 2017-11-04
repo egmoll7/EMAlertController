@@ -111,6 +111,13 @@ open class EMAlertController: UIViewController {
     }
     set {
       imageView.image = newValue
+      guard let image = newValue else {
+        imageViewHeight = 0
+        iconHeightConstraint?.constant = imageViewHeight
+        return
+      }
+      (image.size.height > CGFloat(0.0)) ? (imageViewHeight = Dimension.iconHeight) : (imageViewHeight = 0)
+      iconHeightConstraint?.constant = imageViewHeight
     }
   }
   
@@ -144,6 +151,7 @@ open class EMAlertController: UIViewController {
     }
   }
   
+  /// Alert background color
   public var backgroundColor: UIColor? {
     willSet {
       alertView.backgroundColor = newValue
@@ -159,6 +167,13 @@ open class EMAlertController: UIViewController {
   public var backgroundViewAlpha: CGFloat? {
     willSet {
       backgroundView.alpha = newValue!
+    }
+  }
+  
+  /// Spacing between actions when presenting two actions in horizontal
+  public var buttonSpacing: CGFloat = 15 {
+    willSet {
+      buttonStackView.spacing = newValue
     }
   }
   
@@ -271,7 +286,8 @@ extension EMAlertController {
     imageView.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 5).isActive = true
     imageView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     imageView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
-    imageView.heightAnchor.constraint(equalToConstant: imageViewHeight).isActive = true
+    iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
+    iconHeightConstraint?.isActive = true
     
     // titleLabel Constraints
     titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8).isActive = true
