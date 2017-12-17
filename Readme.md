@@ -6,6 +6,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 [![CocoaPods](https://img.shields.io/cocoapods/v/EMAlertController.svg)]()
 [![GitHub stars](https://img.shields.io/github/stars/egmoll7/EMAlertController.svg)](https://github.com/egmoll7/EMAlertController/stargazers)
+[![CocoaPods](https://img.shields.io/cocoapods/dt/EMAlertController.svg)]()
 
 EMAlertController is a beautiful alternative to the stock iOS UIAlertController. This library is fully customizable with an implementation like the native UIAlertController.
 
@@ -172,7 +173,7 @@ alert.buttonSpacing = 0
 ```
 
 ## TODO
-* [ ] Textfield Support
+* [ ] Textfield Support (WIP)
 * [ ] Carthage Support
 * [ ] Actions Scroll Support
 
