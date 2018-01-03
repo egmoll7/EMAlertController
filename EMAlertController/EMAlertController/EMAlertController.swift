@@ -174,6 +174,15 @@ open class EMAlertController: UIViewController {
       buttonStackView.spacing = newValue
     }
   }
+    
+    public var cancelable: Bool = false {
+        didSet {
+            if (cancelable) {
+                let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapBehind(_:)))
+                backgroundView.addGestureRecognizer(tap)
+            }
+        }
+    }
   
   // MARK: - Initializers
   required public init?(coder aDecoder: NSCoder) {
@@ -308,4 +317,8 @@ extension EMAlertController {
   @objc func buttonAction(sender: EMAlertAction) {
     dismiss(animated: true, completion: nil)
   }
+    
+    @objc func handleTapBehind(_ sender: Any?) {
+        dismiss(animated: true, completion: nil)
+    }
 }
