@@ -3,8 +3,8 @@
 </p>
 
 [![Language](https://img.shields.io/badge/Swift-4-orange.svg)]()
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
-[![CocoaPods](https://img.shields.io/cocoapods/v/EMAlertController.svg)]()
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE)
+[![CocoaPods](https://img.shields.io/cocoapods/v/EMAlertController.svg)](http://cocoadocs.org/docsets/EMAlertController/1.0.1/)
 [![GitHub stars](https://img.shields.io/github/stars/egmoll7/EMAlertController.svg)](https://github.com/egmoll7/EMAlertController/stargazers)
 [![CocoaPods](https://img.shields.io/cocoapods/dt/EMAlertController.svg)]()
 
