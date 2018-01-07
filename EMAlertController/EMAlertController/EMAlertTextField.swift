@@ -38,11 +38,8 @@ open class EMAlertTextField: UITextField {
     super.init(frame: frame)
   }
   
-  public init(placeholderText: String?, alertController: EMAlertController) {
+  public init() {
     super.init(frame: .zero)
-    placeholder = placeholderText
-    delegate = alertController
-    
     setUp()
   }
 }

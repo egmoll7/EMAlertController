@@ -15,6 +15,7 @@ enum Dimension {
   }
   static let padding: CGFloat = 15.0
   static let buttonHeight: CGFloat = 50.0
+  static let iconHeight: CGFloat = 100.0
   static let textFieldHeight: CGFloat = 30.0
 }
 
@@ -22,13 +23,15 @@ open class EMAlertController: UIViewController {
   
   // MARK: - Properties
   internal var alertViewHeight: NSLayoutConstraint?
+  internal var messageTextViewHeightConstraint: NSLayoutConstraint?
   internal var buttonStackViewHeightConstraint: NSLayoutConstraint?
   internal var buttonStackViewWidthConstraint: NSLayoutConstraint?
   internal var scrollViewHeightConstraint: NSLayoutConstraint?
-  internal var imageViewHeight: CGFloat = 100
+  internal var imageViewHeight: CGFloat = Dimension.iconHeight
   internal var titleLabelHeight: CGFloat = 20
   internal var messageLabelHeight: CGFloat = 20
-  internal var textFields: [UITextField] = []
+  internal var iconHeightConstraint: NSLayoutConstraint?
+  internal var textFields: [UITextField] = [] 
   
   internal lazy var backgroundView: UIView = {
     let bgView = UIView()
@@ -136,6 +139,21 @@ open class EMAlertController: UIViewController {
     }
     set {
       messageTextView.text = newValue
+      
+      guard let _ = newValue, let constraint = messageTextViewHeightConstraint else { return }
+    
+      messageLabelHeight = 20.0
+      messageTextView.removeConstraint(constraint)
+      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: messageLabelHeight)
+      messageTextViewHeightConstraint!.isActive = true
+    }
+  }
+  
+  /// Returns the first textField
+  public var firstTextField: UITextField? {
+    get {
+      guard let textField = self.textFields.first else { return nil }
+      return textField
     }
   }
   
@@ -242,10 +260,6 @@ open class EMAlertController: UIViewController {
       self.alertView.layoutIfNeeded()
     }
   }
-  
-  deinit {
-    print("DEINIT")
-  }
 }
 
 // MARK: - Setup Methods
@@ -254,8 +268,6 @@ extension EMAlertController {
   internal func setUp() {
     self.modalPresentationStyle = .custom
     self.modalTransitionStyle = .crossDissolve
-    
-    // TODO: Add touch handler to backgroundView
     
     addConstraits()
   }
@@ -300,8 +312,16 @@ extension EMAlertController {
     messageTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
     messageTextView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     messageTextView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
-    messageTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-    (messageLabelHeight == CGFloat(0.0)) ? (messageTextView.contentSize = CGSize(width: 0, height: 0)) : (messageTextView.contentSize = messageTextView.contentSize)
+    
+    if (messageLabelHeight == 0.0) {
+      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(equalToConstant: messageLabelHeight)
+      messageTextViewHeightConstraint!.isActive = true
+      messageTextView.showsVerticalScrollIndicator = false
+    } else {
+      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: messageLabelHeight)
+      messageTextViewHeightConstraint!.isActive = true
+    }
+    
     messageTextView.sizeToFit()
     
     // actionStackView Constraints
@@ -322,10 +342,16 @@ extension EMAlertController {
   
   @objc internal func keyboardWillShow() {
     // TODO: Implement method
+    UIView.animate(withDuration: 0.3) {
+      self.alertView.center.y -= 100
+    }
   }
   
   @objc internal func keyboardWillHide() {
     // TODO: Implement method
+    UIView.animate(withDuration: 0.3) {
+      self.alertView.center = self.backgroundView.center
+    }
   }
 }
 
@@ -354,11 +380,18 @@ extension EMAlertController {
 
 // MARK: - TextField Methods
 extension EMAlertController {
-  open func addTextField(_ textfield: UITextField) {
+  internal func addTextField(_ textfield: UITextField) {
     textFields.append(textfield)
     buttonStackView.addArrangedSubview(textfield)
     buttonStackViewHeightConstraint?.constant = Dimension.buttonHeight * CGFloat(buttonStackView.arrangedSubviews.count)
     buttonStackView.axis = .vertical
+  }
+  
+  open func addTextField(_ configuration: (_ textField: UITextField?) -> ()) {
+    let textField = EMAlertTextField()
+    textField.delegate = self
+    configuration(textField)
+    addTextField(textField)
   }
 }
 
@@ -366,7 +399,6 @@ extension EMAlertController {
 extension EMAlertController: UITextFieldDelegate {
   public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
-    
     return true
   }
 }
