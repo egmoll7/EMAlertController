@@ -23,6 +23,7 @@ open class EMAlertController: UIViewController {
   
   // MARK: - Properties
   internal var alertViewHeight: NSLayoutConstraint?
+  internal var alertViewWidth: NSLayoutConstraint?
   internal var messageTextViewHeightConstraint: NSLayoutConstraint?
   internal var buttonStackViewHeightConstraint: NSLayoutConstraint?
   internal var buttonStackViewWidthConstraint: NSLayoutConstraint?
@@ -31,7 +32,10 @@ open class EMAlertController: UIViewController {
   internal var titleLabelHeight: CGFloat = 20
   internal var messageLabelHeight: CGFloat = 20
   internal var iconHeightConstraint: NSLayoutConstraint?
-  internal var textFields: [UITextField] = [] 
+  internal var textFields: [UITextField] = []
+  internal var isLaunch = true
+  
+  var heighAnchor: NSLayoutConstraint?
   
   internal lazy var backgroundView: UIView = {
     let bgView = UIView()
@@ -45,7 +49,7 @@ open class EMAlertController: UIViewController {
   internal var alertView: UIView = {
     let alertView = UIView()
     alertView.translatesAutoresizingMaskIntoConstraints = false
-    alertView.backgroundColor = .emAlertviewColor
+    alertView.backgroundColor = .emAlertViewColor
     alertView.layer.cornerRadius = 5
     alertView.layer.shadowColor = UIColor.black.cgColor
     alertView.layer.shadowOpacity = 0.2
@@ -88,6 +92,7 @@ open class EMAlertController: UIViewController {
     textview.isScrollEnabled = false
     textview.isSelectable = false
     textview.bounces = false
+    textview.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .vertical)
     
     return textview
   }()
@@ -233,10 +238,14 @@ open class EMAlertController: UIViewController {
       messageTextView.isScrollEnabled = true
     }
     
-    UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
-      let transform = CGAffineTransform(translationX: 0, y: -100)
-      self.alertView.transform = transform
-    }, completion: nil)
+    // This is being called when typing
+    if (isLaunch) {
+      UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
+        let transform = CGAffineTransform(translationX: 0, y: -100)
+        self.alertView.transform = transform
+        self.isLaunch = false
+      }, completion: nil)
+    }
   }
   
   override open func viewWillDisappear(_ animated: Bool) {
@@ -254,9 +263,23 @@ open class EMAlertController: UIViewController {
   }
   
   open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    self.alertViewHeight?.constant = size.height - 80
+    
+    if size.height < size.width {
+      self.alertViewHeight?.constant = size.height - 40
+      iconHeightConstraint?.constant = 0
+    } else {
+      self.alertViewHeight?.constant = size.height - 80
+      iconHeightConstraint?.constant = Dimension.iconHeight
+    }
+    
+    // this is wrong
+//    self.alertViewHeight?.constant = size.height - 40
+//    alertViewWidth?.constant = Dimension.width
+
+    
     
     UIView.animate(withDuration: 0.3) {
+      //self.alertView.updateConstraints()
       self.alertView.layoutIfNeeded()
     }
   }
@@ -290,22 +313,32 @@ extension EMAlertController {
     // alertView Constraints
     alertView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 100).isActive = true
     alertView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
-    alertView.widthAnchor.constraint(equalToConstant: Dimension.width).isActive = true
+    //alertView.widthAnchor.constraint(equalToConstant: Dimension.width).isActive = true
+    alertViewWidth = alertView.widthAnchor.constraint(equalToConstant: Dimension.width)
+    alertViewWidth?.isActive = true
     alertViewHeight = alertView.heightAnchor.constraint(lessThanOrEqualToConstant: view.bounds.height - 80)
-    alertViewHeight!.isActive = true
+    alertViewHeight?.isActive = true
     
     // imageView Constraints
     imageView.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 5).isActive = true
     imageView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     imageView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
-    iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
+    
+    
+    if view.bounds.height < view.bounds.width {
+      iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
+    } else {
+      iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
+    }
+//    iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
+    // FIXME - If device is in landscape mode use 0 as the image height
     iconHeightConstraint?.isActive = true
     
     // titleLabel Constraints
     titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8).isActive = true
     titleLabel.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     titleLabel.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
-    titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: titleLabelHeight).isActive = true
+//    titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: titleLabelHeight).isActive = true
     titleLabel.sizeToFit()
     
     // messageLabel Constraints
@@ -313,18 +346,18 @@ extension EMAlertController {
     messageTextView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     messageTextView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
     
-    if (messageLabelHeight == 0.0) {
-      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(equalToConstant: messageLabelHeight)
-      messageTextViewHeightConstraint!.isActive = true
-      messageTextView.showsVerticalScrollIndicator = false
-    } else {
-      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: messageLabelHeight)
-      messageTextViewHeightConstraint!.isActive = true
-    }
+//    if (messageLabelHeight == 0.0) {
+//      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(equalToConstant: messageLabelHeight)
+//      messageTextViewHeightConstraint!.isActive = true
+//      messageTextView.showsVerticalScrollIndicator = false
+//    } else {
+//      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: messageLabelHeight)
+//      messageTextViewHeightConstraint!.isActive = true
+//    }
     
     messageTextView.sizeToFit()
     
-    // actionStackView Constraints
+    // actionStackView Constraints    
     buttonStackView.topAnchor.constraint(equalTo: messageTextView.bottomAnchor, constant: 8).isActive = true
     buttonStackView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: 0).isActive = true
     buttonStackView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: 0).isActive = true
@@ -341,16 +374,16 @@ extension EMAlertController {
   }
   
   @objc internal func keyboardWillShow() {
-    // TODO: Implement method
     UIView.animate(withDuration: 0.3) {
-      self.alertView.center.y -= 100
+      let transform = CGAffineTransform(translationX: 0, y: -200)
+      self.alertView.transform = transform
     }
   }
   
   @objc internal func keyboardWillHide() {
-    // TODO: Implement method
     UIView.animate(withDuration: 0.3) {
-      self.alertView.center = self.backgroundView.center
+      let transform = CGAffineTransform(translationX: 0, y: -100)
+      self.alertView.transform = transform
     }
   }
 }

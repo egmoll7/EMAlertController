@@ -12,7 +12,7 @@ import UIKit
 extension UIColor {
   
   /// Default color of the EMAlertView
-  static let emAlertviewColor = alertViewColor()
+  static let emAlertViewColor = alertViewColor()
   
   /// Default color of the EMAlertAction
   static let iosBlueColor = defaultBlueColor()
