@@ -10,13 +10,14 @@ import UIKit
 
 // MARK: - EMAlerView Dimensions
 enum Dimension {
-  static var width: CGFloat {
-    return (UIScreen.main.bounds.width <= 414.0) ? (UIScreen.main.bounds.width - 60) : 280
-  }
   static let padding: CGFloat = 15.0
   static let buttonHeight: CGFloat = 50.0
   static let iconHeight: CGFloat = 100.0
   static let textFieldHeight: CGFloat = 30.0
+  
+  static func width(from size: CGSize) -> CGFloat {
+    return (size.width <= 414) ? size.width - 60 : 280
+  }
 }
 
 open class EMAlertController: UIViewController {
@@ -92,7 +93,6 @@ open class EMAlertController: UIViewController {
     textview.isScrollEnabled = false
     textview.isSelectable = false
     textview.bounces = false
-    textview.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .vertical)
     
     return textview
   }()
@@ -146,7 +146,7 @@ open class EMAlertController: UIViewController {
       messageTextView.text = newValue
       
       guard let _ = newValue, let constraint = messageTextViewHeightConstraint else { return }
-    
+      
       messageLabelHeight = 20.0
       messageTextView.removeConstraint(constraint)
       messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: messageLabelHeight)
@@ -265,22 +265,17 @@ open class EMAlertController: UIViewController {
   open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     
     if size.height < size.width {
-      self.alertViewHeight?.constant = size.height - 40
+      alertViewHeight?.constant = size.height - 40
       iconHeightConstraint?.constant = 0
     } else {
-      self.alertViewHeight?.constant = size.height - 80
+      alertViewHeight?.constant = size.height - 80
       iconHeightConstraint?.constant = Dimension.iconHeight
     }
     
-    // this is wrong
-//    self.alertViewHeight?.constant = size.height - 40
-//    alertViewWidth?.constant = Dimension.width
-
-    
+    alertViewWidth?.constant = Dimension.width(from: size)
     
     UIView.animate(withDuration: 0.3) {
-      //self.alertView.updateConstraints()
-      self.alertView.layoutIfNeeded()
+      self.alertView.updateConstraints()
     }
   }
 }
@@ -314,7 +309,7 @@ extension EMAlertController {
     alertView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 100).isActive = true
     alertView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
     //alertView.widthAnchor.constraint(equalToConstant: Dimension.width).isActive = true
-    alertViewWidth = alertView.widthAnchor.constraint(equalToConstant: Dimension.width)
+    alertViewWidth = alertView.widthAnchor.constraint(equalToConstant: Dimension.width(from: view.bounds.size))
     alertViewWidth?.isActive = true
     alertViewHeight = alertView.heightAnchor.constraint(lessThanOrEqualToConstant: view.bounds.height - 80)
     alertViewHeight?.isActive = true
@@ -323,38 +318,23 @@ extension EMAlertController {
     imageView.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 5).isActive = true
     imageView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     imageView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
-    
-    
     if view.bounds.height < view.bounds.width {
       iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
     } else {
       iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
     }
-//    iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
-    // FIXME - If device is in landscape mode use 0 as the image height
     iconHeightConstraint?.isActive = true
     
     // titleLabel Constraints
     titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8).isActive = true
     titleLabel.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     titleLabel.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
-//    titleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: titleLabelHeight).isActive = true
     titleLabel.sizeToFit()
     
     // messageLabel Constraints
     messageTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
     messageTextView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     messageTextView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
-    
-//    if (messageLabelHeight == 0.0) {
-//      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(equalToConstant: messageLabelHeight)
-//      messageTextViewHeightConstraint!.isActive = true
-//      messageTextView.showsVerticalScrollIndicator = false
-//    } else {
-//      messageTextViewHeightConstraint = messageTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: messageLabelHeight)
-//      messageTextViewHeightConstraint!.isActive = true
-//    }
-    
     messageTextView.sizeToFit()
     
     // actionStackView Constraints    
