@@ -267,7 +267,7 @@ open class EMAlertController: UIViewController {
       iconHeightConstraint?.constant = 0
     } else {
       alertViewHeight?.constant = size.height - 80
-      iconHeightConstraint?.constant = Dimension.iconHeight
+      iconHeightConstraint?.constant = imageViewHeight
     }
     
     alertViewWidth?.constant = Dimension.width(from: size)
@@ -315,11 +315,7 @@ extension EMAlertController {
     imageView.topAnchor.constraint(equalTo: alertView.topAnchor, constant: 5).isActive = true
     imageView.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: Dimension.padding).isActive = true
     imageView.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -Dimension.padding).isActive = true
-    if view.bounds.height < view.bounds.width {
-      iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: 0)
-    } else {
-      iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
-    }
+    iconHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
     iconHeightConstraint?.isActive = true
     
     // titleLabel Constraints
