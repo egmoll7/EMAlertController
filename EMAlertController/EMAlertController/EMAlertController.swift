@@ -229,8 +229,8 @@ open class EMAlertController: UIViewController {
   }
   
   open override func viewWillAppear(_ animated: Bool) {
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
   }
   
   override open func viewDidLayoutSubviews() {
@@ -257,9 +257,8 @@ open class EMAlertController: UIViewController {
   
   open override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    
-    NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
-    NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
   }
   
   open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -308,7 +307,6 @@ extension EMAlertController {
     // alertView Constraints
     alertView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 100).isActive = true
     alertView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
-    //alertView.widthAnchor.constraint(equalToConstant: Dimension.width).isActive = true
     alertViewWidth = alertView.widthAnchor.constraint(equalToConstant: Dimension.width(from: view.bounds.size))
     alertViewWidth?.isActive = true
     alertViewHeight = alertView.heightAnchor.constraint(lessThanOrEqualToConstant: view.bounds.height - 80)
