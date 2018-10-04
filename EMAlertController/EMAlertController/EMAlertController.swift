@@ -33,10 +33,9 @@ open class EMAlertController: UIViewController {
   internal var titleLabelHeight: CGFloat = 20
   internal var messageLabelHeight: CGFloat = 20
   internal var iconHeightConstraint: NSLayoutConstraint?
-  internal var textFields: [UITextField] = []
+  internal var heighAnchor: NSLayoutConstraint?
   internal var isLaunch = true
-  
-  var heighAnchor: NSLayoutConstraint?
+  public var textFields: [UITextField] = []
   
   internal lazy var backgroundView: UIView = {
     let bgView = UIView()
