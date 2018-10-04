@@ -266,7 +266,6 @@ open class EMAlertController: UIViewController {
   
   open override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    
     NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
   }
@@ -317,7 +316,6 @@ extension EMAlertController {
     // alertView Constraints
     alertView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 100).isActive = true
     alertView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor).isActive = true
-    //alertView.widthAnchor.constraint(equalToConstant: Dimension.width).isActive = true
     alertViewWidth = alertView.widthAnchor.constraint(equalToConstant: Dimension.width(from: view.bounds.size))
     alertViewWidth?.isActive = true
     alertViewHeight = alertView.heightAnchor.constraint(lessThanOrEqualToConstant: view.bounds.height - 80)
