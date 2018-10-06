@@ -90,7 +90,6 @@ open class EMAlertController: UIViewController {
     textview.textColor = UIColor.black
     textview.backgroundColor = UIColor.clear
     textview.isScrollEnabled = false
-    textview.isSelectable = false
     textview.bounces = false
     
     return textview
@@ -208,6 +207,21 @@ open class EMAlertController: UIViewController {
         }
     }
   
+  /// A Boolean value indicating whether the message text is selectable
+  public var isMessageSelectable: Bool = false {
+    willSet {
+      messageTextView.isSelectable = newValue
+    }
+  }
+  
+  /// Defines the types of information that can be detected in the message text
+  public var dataDetectorTypes: UIDataDetectorTypes? {
+    willSet {
+      guard let newValue = newValue else { return }
+      messageTextView.dataDetectorTypes = newValue
+    }
+  }
+  
   // MARK: - Initializers
   required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -227,6 +241,7 @@ open class EMAlertController: UIViewController {
     
     titleText = title
     messageText = message
+    messageTextView.isSelectable = isMessageSelectable 
     
     setUp()
   }
@@ -406,6 +421,7 @@ extension EMAlertController {
     buttonStackView.axis = .vertical
   }
   
+  ///
   open func addTextField(_ configuration: (_ textField: UITextField?) -> ()) {
     let textField = EMAlertTextField()
     textField.delegate = self
