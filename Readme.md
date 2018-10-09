@@ -28,6 +28,7 @@ EMAlertController is a beautiful alternative to the stock iOS UIAlertController.
 * [Corner Radius](#corner-radius)
 * [Background Color](#background-color)
 * [Background View Color](#background-view-color)
+* [Text Fields](#textfields)
 * [Todo](#todo)
 * [License](#license)
 
