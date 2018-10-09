@@ -2,7 +2,7 @@
 <img src="https://github.com/egmoll7/EMAlertController/blob/master/Images/EMAlertController.png" alt="Icon"/>
 </p>
 
-[![Language](https://img.shields.io/badge/Swift-4-orange.svg)]()
+[![Language](https://img.shields.io/badge/Swift-4.2-orange.svg)]()
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/v/EMAlertController.svg)](http://cocoadocs.org/docsets/EMAlertController/1.0.1/)
 [![GitHub stars](https://img.shields.io/github/stars/egmoll7/EMAlertController.svg)](https://github.com/egmoll7/EMAlertController/stargazers)
