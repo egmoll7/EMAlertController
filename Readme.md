@@ -35,6 +35,7 @@ EMAlertController is a beautiful alternative to the stock iOS UIAlertController.
 * [x] Alert Image (Optional)
 * [x] Title
 * [x] Scrollable Message (Optional)
+* [x] Text Fields
 * [x] Closure when a button is pressed
 * [x] Fully Customizable
 * [x] CocoaPods
@@ -115,6 +116,17 @@ alert.messageColor = UIColor.red
 // Default color = UIColor.black
 ```
 
+### Message Data Detector Types
+```swift
+alert.dataDetectorTypes = .all
+```
+
+### Messages Make Message Selectable 
+```swift
+alert.isMessageSelectable = true
+// This must be set to `true` in order to highlight the detected data types
+```
+
 ### Corner Radius
 ```swift
 alert.cornerRadius = 10
@@ -172,8 +184,22 @@ alert.buttonSpacing = 0
 // Default spacing = 15
 ```
 
+### TextFields
+----------------
+
+### Adding a Text Field
+```swift
+ alert.addTextField { (textField) in
+   textField?.placeholder = "Username"
+ }
+ ```
+ 
+### Getting Text from Text Field
+```swift
+gaurd let username = alert.textFields.first?.text else { return }
+```
+
 ## TODO
-* [ ] Textfield Support (WIP)
 * [ ] Carthage Support
 * [ ] Actions Scroll Support
 
