@@ -222,21 +222,6 @@ open class EMAlertController: UIViewController {
     }
   }
   
-  /// A Boolean value indicating whether the message text is selectable
-  public var isMessageSelectable: Bool = false {
-    willSet {
-      messageTextView.isSelectable = newValue
-    }
-  }
-  
-  /// Defines the types of information that can be detected in the message text
-  public var dataDetectorTypes: UIDataDetectorTypes? {
-    willSet {
-      guard let newValue = newValue else { return }
-      messageTextView.dataDetectorTypes = newValue
-    }
-  }
-  
   // MARK: - Initializers
   required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -425,32 +410,6 @@ extension EMAlertController {
     @objc func handleTapBehind(_ sender: Any?) {
         dismiss(animated: true, completion: nil)
     }
-}
-
-// MARK: - TextField Methods
-extension EMAlertController {
-  internal func addTextField(_ textfield: UITextField) {
-    textFields.append(textfield)
-    buttonStackView.addArrangedSubview(textfield)
-    buttonStackViewHeightConstraint?.constant = Dimension.buttonHeight * CGFloat(buttonStackView.arrangedSubviews.count)
-    buttonStackView.axis = .vertical
-  }
-  
-  ///
-  open func addTextField(_ configuration: (_ textField: UITextField?) -> ()) {
-    let textField = EMAlertTextField()
-    textField.delegate = self
-    configuration(textField)
-    addTextField(textField)
-  }
-}
-
-// MARK: - Textfield Delegates
-extension EMAlertController: UITextFieldDelegate {
-  public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
-    return true
-  }
 }
 
 // MARK: - TextField Methods
