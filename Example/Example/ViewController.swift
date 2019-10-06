@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EMAlertController
 
 class ViewController: UIViewController {
   

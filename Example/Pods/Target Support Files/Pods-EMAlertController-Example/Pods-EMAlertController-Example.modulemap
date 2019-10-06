@@ -1,0 +1,6 @@
+framework module Pods_EMAlertController_Example {
+  umbrella header "Pods-EMAlertController-Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
