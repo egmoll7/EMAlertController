@@ -7,29 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		885AF7D11F9EBFE100DE5A83 /* EMAlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AF7D01F9EBFE100DE5A83 /* EMAlertTextField.swift */; };
-		8862A8811F96DE91001B33D4 /* UIColor+EMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862A8801F96DE91001B33D4 /* UIColor+EMAlertController.swift */; };
 		88794A271F914A1D00920DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88794A261F914A1D00920DDD /* AppDelegate.swift */; };
 		88794A291F914A1D00920DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88794A281F914A1D00920DDD /* ViewController.swift */; };
 		88794A2C1F914A1D00920DDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88794A2A1F914A1D00920DDD /* Main.storyboard */; };
 		88794A2E1F914A1D00920DDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88794A2D1F914A1D00920DDD /* Assets.xcassets */; };
 		88794A311F914A1D00920DDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88794A2F1F914A1D00920DDD /* LaunchScreen.storyboard */; };
-		88794A391F914AA500920DDD /* EMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88794A381F914AA500920DDD /* EMAlertController.swift */; };
-		88794A3B1F92AC3500920DDD /* EMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88794A3A1F92AC3500920DDD /* EMAlertAction.swift */; };
+		B50A989EC33DAB7B83C53ADC /* Pods_EMAlertController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82AA5F9539EACBE5A052E18 /* Pods_EMAlertController_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		885AF7D01F9EBFE100DE5A83 /* EMAlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertTextField.swift; sourceTree = "<group>"; };
-		8862A8801F96DE91001B33D4 /* UIColor+EMAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+EMAlertController.swift"; sourceTree = "<group>"; };
-		88794A231F914A1D00920DDD /* EMAlertController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMAlertController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		580CF85AAE60BDE09C5850E9 /* Pods-EMAlertController-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMAlertController-Example.release.xcconfig"; path = "Target Support Files/Pods-EMAlertController-Example/Pods-EMAlertController-Example.release.xcconfig"; sourceTree = "<group>"; };
+		88794A231F914A1D00920DDD /* EMAlertController-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EMAlertController-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88794A261F914A1D00920DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88794A281F914A1D00920DDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88794A2B1F914A1D00920DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88794A2D1F914A1D00920DDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88794A301F914A1D00920DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		88794A321F914A1D00920DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88794A381F914AA500920DDD /* EMAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertController.swift; sourceTree = "<group>"; };
-		88794A3A1F92AC3500920DDD /* EMAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertAction.swift; sourceTree = "<group>"; };
+		88794A321F914A1D00920DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		BD2B49BBA1C22645600CC8FF /* Pods-EMAlertController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMAlertController.release.xcconfig"; path = "Target Support Files/Pods-EMAlertController/Pods-EMAlertController.release.xcconfig"; sourceTree = "<group>"; };
+		F82AA5F9539EACBE5A052E18 /* Pods_EMAlertController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EMAlertController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85022048BBDCC4B30DB538A /* Pods-EMAlertController-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMAlertController-Example.debug.xcconfig"; path = "Target Support Files/Pods-EMAlertController-Example/Pods-EMAlertController-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		FBDA133DF8E6844DD4F8BFB7 /* Pods-EMAlertController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMAlertController.debug.xcconfig"; path = "Target Support Files/Pods-EMAlertController/Pods-EMAlertController.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50A989EC33DAB7B83C53ADC /* Pods_EMAlertController_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,41 +45,22 @@
 		88794A1A1F914A1D00920DDD = {
 			isa = PBXGroup;
 			children = (
-				88794A251F914A1D00920DDD /* EMAlertController */,
+				88794A251F914A1D00920DDD /* Example */,
 				88794A241F914A1D00920DDD /* Products */,
+				889F2F6743D2E02DD1EC6F7A /* Pods */,
+				C2CA46E2636CB26A6D8F8631 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		88794A241F914A1D00920DDD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88794A231F914A1D00920DDD /* EMAlertController.app */,
+				88794A231F914A1D00920DDD /* EMAlertController-Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		88794A251F914A1D00920DDD /* EMAlertController */ = {
-			isa = PBXGroup;
-			children = (
-				88794A321F914A1D00920DDD /* Info.plist */,
-				88A8B1491F99508C0052DBA6 /* Example */,
-				88794A3C1F92B71700920DDD /* EMAlertController */,
-			);
-			path = EMAlertController;
-			sourceTree = "<group>";
-		};
-		88794A3C1F92B71700920DDD /* EMAlertController */ = {
-			isa = PBXGroup;
-			children = (
-				8862A8801F96DE91001B33D4 /* UIColor+EMAlertController.swift */,
-				88794A3A1F92AC3500920DDD /* EMAlertAction.swift */,
-				88794A381F914AA500920DDD /* EMAlertController.swift */,
-				885AF7D01F9EBFE100DE5A83 /* EMAlertTextField.swift */,
-			);
-			path = EMAlertController;
-			sourceTree = "<group>";
-		};
-		88A8B1491F99508C0052DBA6 /* Example */ = {
+		88794A251F914A1D00920DDD /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				88794A261F914A1D00920DDD /* AppDelegate.swift */,
@@ -88,28 +68,50 @@
 				88794A2A1F914A1D00920DDD /* Main.storyboard */,
 				88794A2D1F914A1D00920DDD /* Assets.xcassets */,
 				88794A2F1F914A1D00920DDD /* LaunchScreen.storyboard */,
+				88794A321F914A1D00920DDD /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		889F2F6743D2E02DD1EC6F7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBDA133DF8E6844DD4F8BFB7 /* Pods-EMAlertController.debug.xcconfig */,
+				BD2B49BBA1C22645600CC8FF /* Pods-EMAlertController.release.xcconfig */,
+				F85022048BBDCC4B30DB538A /* Pods-EMAlertController-Example.debug.xcconfig */,
+				580CF85AAE60BDE09C5850E9 /* Pods-EMAlertController-Example.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C2CA46E2636CB26A6D8F8631 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F82AA5F9539EACBE5A052E18 /* Pods_EMAlertController_Example.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		88794A221F914A1D00920DDD /* EMAlertController */ = {
+		88794A221F914A1D00920DDD /* EMAlertController-Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88794A351F914A1D00920DDD /* Build configuration list for PBXNativeTarget "EMAlertController" */;
+			buildConfigurationList = 88794A351F914A1D00920DDD /* Build configuration list for PBXNativeTarget "EMAlertController-Example" */;
 			buildPhases = (
+				2EABD1FFAFBC2AE22040D83D /* [CP] Check Pods Manifest.lock */,
 				88794A1F1F914A1D00920DDD /* Sources */,
 				88794A201F914A1D00920DDD /* Frameworks */,
 				88794A211F914A1D00920DDD /* Resources */,
+				378E623B698414CDDAAFBC2C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = EMAlertController;
+			name = "EMAlertController-Example";
 			productName = EMAlertController;
-			productReference = 88794A231F914A1D00920DDD /* EMAlertController.app */;
+			productReference = 88794A231F914A1D00920DDD /* EMAlertController-Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,11 +126,12 @@
 				TargetAttributes = {
 					88794A221F914A1D00920DDD = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1030;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 88794A1E1F914A1D00920DDD /* Build configuration list for PBXProject "EMAlertController" */;
+			buildConfigurationList = 88794A1E1F914A1D00920DDD /* Build configuration list for PBXProject "EMAlertController-Example" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				88794A221F914A1D00920DDD /* EMAlertController */,
+				88794A221F914A1D00920DDD /* EMAlertController-Example */,
 			);
 		};
 /* End PBXProject section */
@@ -159,17 +162,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2EABD1FFAFBC2AE22040D83D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EMAlertController-Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		378E623B698414CDDAAFBC2C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EMAlertController-Example/Pods-EMAlertController-Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/EMAlertController/EMAlertController.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EMAlertController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EMAlertController-Example/Pods-EMAlertController-Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		88794A1F1F914A1D00920DDD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				885AF7D11F9EBFE100DE5A83 /* EMAlertTextField.swift in Sources */,
 				88794A291F914A1D00920DDD /* ViewController.swift in Sources */,
-				8862A8811F96DE91001B33D4 /* UIColor+EMAlertController.swift in Sources */,
 				88794A271F914A1D00920DDD /* AppDelegate.swift in Sources */,
-				88794A3B1F92AC3500920DDD /* EMAlertAction.swift in Sources */,
-				88794A391F914AA500920DDD /* EMAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -298,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -308,32 +350,34 @@
 		};
 		88794A361F914A1D00920DDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F85022048BBDCC4B30DB538A /* Pods-EMAlertController-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K2T5FY27PH;
-				INFOPLIST_FILE = EMAlertController/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eduardomoll.EMAlertController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		88794A371F914A1D00920DDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 580CF85AAE60BDE09C5850E9 /* Pods-EMAlertController-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K2T5FY27PH;
-				INFOPLIST_FILE = EMAlertController/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eduardomoll.EMAlertController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -341,7 +385,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		88794A1E1F914A1D00920DDD /* Build configuration list for PBXProject "EMAlertController" */ = {
+		88794A1E1F914A1D00920DDD /* Build configuration list for PBXProject "EMAlertController-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88794A331F914A1D00920DDD /* Debug */,
@@ -350,7 +394,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88794A351F914A1D00920DDD /* Build configuration list for PBXNativeTarget "EMAlertController" */ = {
+		88794A351F914A1D00920DDD /* Build configuration list for PBXNativeTarget "EMAlertController-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88794A361F914A1D00920DDD /* Debug */,

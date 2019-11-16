@@ -1,0 +1,16 @@
+PODS:
+  - EMAlertController (1.0.2)
+
+DEPENDENCIES:
+  - EMAlertController (from `../`)
+
+EXTERNAL SOURCES:
+  EMAlertController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EMAlertController: 33404a9f25c57cf5ea94ba76d202cde37f6c936a
+
+PODFILE CHECKSUM: e48df7a31a15afb07ba5e8ca984b68765d3a4784
+
+COCOAPODS: 1.7.5
