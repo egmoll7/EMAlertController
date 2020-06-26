@@ -79,8 +79,8 @@ let confirm = EMAlertAction(title: "CONFIRM", style: .normal) {
 // Perform Action
 }
 
-alert.addAction(action: cancel)
-alert.addAction(action: confirm)
+alert.addAction(cancel)
+alert.addAction(confirm)
 ```
 
 ## Customization
@@ -197,7 +197,7 @@ alert.buttonSpacing = 0
  
 ### Getting Text from Text Field
 ```swift
-gaurd let username = alert.textFields.first?.text else { return }
+guard let username = alert.textFields.first?.text else { return }
 ```
 
 ## TODO
